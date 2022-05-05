@@ -1,3 +1,3 @@
-class Attachment {
+interface Attachment {
 
 }
