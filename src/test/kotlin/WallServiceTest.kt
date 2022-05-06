@@ -1,9 +1,20 @@
+import attachments.*
 import org.junit.Test
 
 import org.junit.Assert.*
 
 class WallServiceTest {
     private val wallService: WallService = WallService()
+
+    private fun getTestAttachments(): Array<Attachment> {
+        return arrayOf(
+            AlbumAttachment(null),
+            AudioAttachment(null),
+            PageAttachment(null),
+            PhotoAttachment(null),
+            VideoAttachment(null)
+        )
+    }
 
     private fun getTestPost(): Post {
         return Post(
@@ -22,6 +33,7 @@ class WallServiceTest {
             reposts = null,
             views = null,
             postType = "",
+            attachments = getTestAttachments(),
             signerId = 0,
             canPin = true,
             canEdit = true,
