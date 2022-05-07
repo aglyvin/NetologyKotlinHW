@@ -1,3 +1,5 @@
+import attachments.Attachment
+
 data class Post(
     val id: Int = 0,
     val ownerId: Int = 0,
@@ -14,6 +16,7 @@ data class Post(
     val reposts: Reposts?,
     val views: Views?,
     val postType: String,
+    val attachments: Array<Attachment>?,
     val signerId: Int = 0,
     val canPin: Boolean,
     val canEdit: Boolean,
