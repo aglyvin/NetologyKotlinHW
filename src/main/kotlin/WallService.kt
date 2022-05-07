@@ -1,6 +1,8 @@
 class WallService {
     private var posts = emptyArray<Post>()
+    private var comments = emptyArray<Comment>()
     private var nextId: Int = 1
+    private var nextCommentId: Int = 1
 
     fun add(post: Post): Post {
         posts += post.copy(id = nextId++)
@@ -16,4 +18,8 @@ class WallService {
         return false
     }
 
+    fun createComment(comment: Comment) {
+        posts.firstOrNull {it.id == comment.postId} ?: throw PostNotFoundException()
+        comments += comment.copy(id = nextCommentId++)
+    }
 }

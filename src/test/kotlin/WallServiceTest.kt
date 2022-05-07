@@ -45,6 +45,28 @@ class WallServiceTest {
         )
     }
 
+    private fun addSomePosts() {
+        val testPost = getTestPost()
+        wallService.add(testPost.copy())
+        wallService.add(testPost.copy())
+    }
+
+    fun getTestComment(postId: Int): Comment {
+        return Comment(
+            1,
+            1,
+            postId,
+            0,
+            "",
+            null,
+            0,
+            0,
+            null,
+            null,
+            null
+        )
+    }
+
     @Test
     fun add() {
         var post = getTestPost()
@@ -70,4 +92,15 @@ class WallServiceTest {
         assertEquals(false, res)
     }
 
+    @Test(expected = PostNotFoundException::class)
+    fun createComment_shouldThrow() {
+        addSomePosts()
+        wallService.createComment(getTestComment(5))
+    }
+
+    @Test
+    fun createComment_shouldntThrow() {
+        addSomePosts()
+        wallService.createComment(getTestComment(1))
+    }
 }
