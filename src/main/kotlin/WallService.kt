@@ -10,8 +10,7 @@ class WallService {
     fun update(post: Post): Boolean {
         for ((index, postForEdit) in posts.withIndex()){
             if (postForEdit.id != post.id) continue
-            val newPost = post.copy(ownerId = postForEdit.ownerId, date = postForEdit.date)
-            posts[index] = newPost
+            posts[index] = post.copy(ownerId = postForEdit.ownerId, date = postForEdit.date)
             return true
         }
         return false
